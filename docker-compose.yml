@@ -1,0 +1,8 @@
+services:
+  linux1:
+    image: img01:latest
+    stdin_open: true
+    tty: true
+    container_name: test01
+    volumes:
+      - c:\temp:/hosttemp:rw
