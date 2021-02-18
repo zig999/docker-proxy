@@ -6,10 +6,15 @@ ARG pass
 
 USER root
 
-COPY configproxy.sh /root
-
-#RUN ["chmod", "+x", "/root/configproxy.sh"]
+# -z the length of STRING is zero
+# [] are an alias for test command
+# if $user is not empty, write credentials file
 RUN if [ ! -z "$user" ]; then echo "${user} ${pass}">/root/proxy_credentials ; fi
+
+#copy bash scripts
+COPY configproxy.sh /root
+COPY startup.sh .
+
 RUN ["/bin/bash", "-c", ". /root/configproxy.sh"]
 
 # Install dependencies and tools
@@ -17,6 +22,5 @@ RUN ["/bin/bash", "-c", ". /root/configproxy.sh"]
 #    apt-get install -yqq --no-install-recommends \
 #    vim iputils-ping
 
-COPY startup.sh .
 ENTRYPOINT ["./startup.sh"]
 CMD ["sh", "-c", "bash"]
