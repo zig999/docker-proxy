@@ -18,9 +18,9 @@ COPY startup.sh .
 RUN ["/bin/bash", "-c", ". /root/configproxy.sh"]
 
 # Install dependencies and tools
-#RUN apt-get update -y && \
-#    apt-get install -yqq --no-install-recommends \
-#    vim iputils-ping
+RUN apt-get update -y && \
+    apt-get install -yqq --no-install-recommends \
+    vim iputils-ping
 
 ENTRYPOINT ["./startup.sh"]
 CMD ["sh", "-c", "bash"]
