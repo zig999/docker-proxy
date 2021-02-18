@@ -17,7 +17,8 @@ COPY startup.sh .
 
 RUN ["/bin/bash", "-c", ". /root/configproxy.sh"]
 
-# Install dependencies and tools
+# Install dependencies and tool
+# Modify as needed
 RUN apt-get update -y && \
     apt-get install -yqq --no-install-recommends \
     vim iputils-ping
