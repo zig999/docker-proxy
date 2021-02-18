@@ -1,4 +1,4 @@
-# Conditional Proxy Settings
+# Conditional Proxy Settings for Docker
 
 ## State of the problem
 
